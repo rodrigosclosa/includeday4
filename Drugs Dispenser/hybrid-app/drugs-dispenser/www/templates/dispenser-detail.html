@@ -1,0 +1,31 @@
+<ion-view view-title="{{drug.medicamento.descricaoMedicamento}}">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="" class="circleBase type2 medicamento-{{drug.numeroMedicamento}}" style="width: 64px; height: 64px">
+        <h2><strong>{{drug.medicamento.descricaoMedicamento}}</strong></h2>
+        <label class="item item-input-inset">
+          <p>Data início: {{drug.dataInicio | date:'dd/MM/yyyy HH:mm'}}</p>
+        </label>
+        <label class="item item-input-inset">
+          <p>Última dosagem: {{drug.ultimaDosagem | date:'dd/MM/yyyy HH:mm'}}</p>
+        </label>
+        <label class="item item-input-inset item-select">
+          <p>Dosagem: </p>
+          <select ng-model="drug.dosagem">
+            <option value="1" ng-selected="drug.dosagem == 1">1</option>
+            <option value="2" ng-selected="drug.dosagem == 2">2</option>
+            <option value="3" ng-selected="drug.dosagem == 3">3</option>
+            <option value="4" ng-selected="drug.dosagem == 4">4</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <button class="button button-block button-calm" ng-click="gravarDosagem(drug)">
+      Gravar dosagem
+    </button>
+    <button class="button button-block button-assertive" ng-click="resetDatas(drug)">
+      Reset
+    </button>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+    <title>Hello, Endpoints!</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+<body role="document" style="padding-top: 70px;">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Hello, Endpoints!</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://developers.google.com/appengine/docs/java/">Google App
+                            Engine</a></li>
+                        <li><a href="https://developers.google.com/appengine/docs/java/endpoints/">Google
+                            Cloud Endpoints</a></li>
+                        <li>
+                            <a href="https://github.com/GoogleCloudPlatform/gradle-appengine-templates/tree/master/HelloEndpoints">Connecting
+                                your Android application to this backend</a></li>
+                    </ul>
+                </li>
+                <li><a href="/_ah/api/explorer">Google Cloud Endpoints API Explorer</a></li>
+                <li><a href="https://console.developers.google.com">Google Developers Console</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container theme-showcase" role="main">
+    <!--
+      Output from Endpoints API call.
+    -->
+    <div class="alert alert-success" style="visibility: collapse;" id="outputAlert"></div>
+
+    <!--
+      A form that takes a text value and submits it to the Endpoint,
+      access to the Endpoint is enabled once the client is loaded below.
+    -->
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Desafio developer</h1>
+                <h2>Painel de Medicamentos:</h2>
+                <ul>
+					<li>1º - No painel de dispensers e medicamentos, adicionar o tipo de medicamento e o intervalo em minutos nos cartões que aparecem no painel.</li>
+					<li>2º - Adicionar Utils.obterCorTipoMedicamento(item.numeroMedicamento) para obter a cor do medicamento no LABEL do HTML.</li>
+						Explicar no manual os 4 tipos de css.</li> 
+					<li>3º - Adicionar a propriedade nome do medicamento.</li>
+					<li>4º - Adicionar a função que aprenseta se o medicamento caiu.</li>
+				</ul>
+				<h2>Dispenser:</h2>
+				<ul>
+					<li>1º - Na ação editar deve ser adicionado os valores no campos descrição e validade para os compartilhamentos.</li>
+					<li>2º - Ao clicar nos botões BH e campinas os participantes devem validar as alterações do dispenser antes de submeter para as API'S.</li>
+					<li>3° - Ao clicar no botão atualizar as informações deve aparecer um bootbox mostrando o estado da operação, apresentando o nome do dispenser.</li>
+					<li>4º - Adicionar o campo descrição do medicamento 1,2,3 e 4.</li>
+					<li>5º - Ajustar a limpeza do formulário ao salvar ou atualizar valores.</li>
+				</ul>
+				<h2>Agenda</h2>
+					<ul>
+						<li>1º - Carregar lista de dispensers ao inicializar a tela.</li>		
+						<li>2º - Ajustar url da função que carrega os itens do combobox medicamentos.</li>
+						<li>3º - Quando o combobox do dispenser estiver na opção "Selecione uma opção" o combobox de medicamentos deve estar bloqueado.</li>
+						<li>4º - Preencher a tabela com as informações faltantes obs: verificar o log do console do navegador para descobrir os nomes da propriedades do objeto que vieram da api.</li>
+						<li>5º - Adicionar o evento do botão remover.</li>
+						<li>6º - Ajustar a url de remover item com os valor da variavel Id.</li>
+						<li>7º - Adicionar mensagem de status "cadastrado com sucesso" ao adicionar novo item na agenda.</li>
+						<li>8º - Adicionar campo de intervalo em minutos no html.</li>
+						<li>9º - Atualizar a lista após remoção do item.</li>
+					</ul>
+				<br>
+                <ul>
+                    <li><a href="desafio-developer.html">Desafio Developers</a></li>
+                    <li><a href="https://docs.google.com/a/ciandt.com/document/d/13_zX9GdhcrMuIYuHu_0kBepIw6wbFcfx1Gp21nhSeU4/edit?usp=sharing">Desafio Testers</a></li>
+                    <li><a href="index.html">Página Inicial</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // A function that attaches a "Say Hello" button click handler
+    function enableClick() {
+      document.getElementById('helloButton').onclick = function() {
+        var name = document.getElementById('nameInput').value;
+        gapi.client.myApi.sayHi({'name': name}).execute(
+          function(response) {
+            var outputAlertDiv = document.getElementById('outputAlert');
+            outputAlertDiv.style.visibility = 'visible';
+
+            if (!response.error) {
+              outputAlertDiv.className = 'alert alert-success';
+              outputAlertDiv.innerHTML = '<h2>' + response.result.data + '</h2>';
+            }
+            else if (response.error) {
+              outputAlertDiv.className = 'alert alert-danger';
+              outputAlertDiv.innerHTML = '<b>Error Code: </b>' + response.error.code + ' [' + response.error.message + ']';
+            }
+          }
+        );
+        return false;
+      }
+    }
+    // This is called initially
+    function init() {
+      var apiName = 'myApi';
+      var apiVersion = 'v1';
+      var apiRoot = 'https://' + window.location.host + '/_ah/api';
+      if (window.location.hostname == 'localhost'
+          || window.location.hostname == '127.0.0.1'
+          || ((window.location.port != "") && (window.location.port > 1023))) {
+            // We're probably running against the DevAppServer
+            apiRoot = 'http://' + window.location.host + '/_ah/api';
+      }
+      var callback = function() {
+        enableClick();
+      }
+      gapi.client.load(apiName, apiVersion, callback, apiRoot);
+    }
+
+</script>
+<!--
+ Load the Google APIs Client Library for JavaScript
+ More info here : https://developers.google.com/api-client-library/javascript/reference/referencedocs
+-->
+
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/* Empty. Add your own CSS if you like */
+.medicamento-1 {
+    background: green;
+}
+
+.medicamento-2 {
+    background: orange;
+}
+
+.medicamento-3 {
+    background: blue;
+}
+
+.medicamento-4 {
+    background: red;
+}
+
+.circleBase {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.type2 {
+    width: 100px;
+    height: 100px;
+    /*background: #ccc;*/
+    border: 2px solid #000;
+}
