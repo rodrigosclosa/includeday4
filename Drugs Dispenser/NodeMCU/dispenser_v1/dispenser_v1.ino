@@ -20,7 +20,7 @@
 const String codigoDispenser = "codigo";
 const char* ssid     = "";
 const char* password = "";
-const char* baseurl = "drugs-dispenser.appspot.com";
+const char* baseurl = "";
 const int porta = 443;
 const int tempoTimer = 60 * 1000;
 
