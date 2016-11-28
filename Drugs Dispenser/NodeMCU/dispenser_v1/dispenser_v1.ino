@@ -17,9 +17,9 @@
 #define SERVO_LOCK D7
 #define SERVO_TRANSP D8
 
-const String codigoDispenser = "A1B2C3D4E5F6";
-const char* ssid     = "IOT";
-const char* password = "INTERNETOFTHINGS";
+const String codigoDispenser = "codigo";
+const char* ssid     = "";
+const char* password = "";
 const char* baseurl = "drugs-dispenser.appspot.com";
 const int porta = 443;
 const int tempoTimer = 60 * 1000;
