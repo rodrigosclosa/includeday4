@@ -8,7 +8,7 @@ var ID_DISPENSER_BH = '5644406560391168';
 var ID_DISPENSER_CAMPINAS = '5137355874762752';
 
 /// chave da API do Google Maps
-var API_KEY = "AIzaSyCOfscKjGzCub_QJrbXTV8PWS2TP9ayPs4";
+var API_KEY = "removido por segurança";
 
 /// configuração dos links do menu (tanto lateral como no topo)
 var MENU = {
