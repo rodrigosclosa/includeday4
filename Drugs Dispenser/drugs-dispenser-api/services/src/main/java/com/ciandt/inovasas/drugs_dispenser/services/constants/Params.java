@@ -18,15 +18,15 @@ public class Params {
     }
 
     public String getPushwooshToken() {
-        return "ZXdh6Ps4aOim8r9YeMXSa10QO6pqxPQUXNcVHkY1jvkZXXuKQ7AT8Zt6CKeLKHHAC8tlXzQ9l6VsTwagvT9j";
+        return "removido por segurança";
     }
 
     public String getOneSignalKey() {
-        return "N2RkNWQxNTctYmJjYS00OTZkLTgzOTktMTY1YWZlNzU1MmQz";
+        return "removido por segurança";
     }
 
     public String getPushwooshAppId() {
-        return "47A7A-56674";
+        return "removido por segurança";
     }
 
     public String getPushwooshTag(String username) {
